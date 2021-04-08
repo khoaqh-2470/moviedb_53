@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">T H E  C I N E M A</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="hot">Hot</string>
+    <string name="genres">Genres</string>
+    <string name="favorite">Favorite</string>
+    <string name="title_app">T H E   C I N E M A</string>
+    <string name="search">Search</string>
+</resources>

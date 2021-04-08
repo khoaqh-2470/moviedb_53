@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/hotPage"
+        android:enabled="true"
+        android:icon="@drawable/ic_fire"
+        android:title="@string/hot" />
+    <item
+        android:id="@+id/genresPage"
+        android:enabled="true"
+        android:icon="@drawable/ic_list"
+        android:title="@string/genres" />
+    <item
+        android:id="@+id/favoritePage"
+        android:enabled="true"
+        android:icon="@drawable/ic_heart"
+        android:title="@string/favorite" />
+</menu>
