@@ -1,14 +1,12 @@
 package com.sun.moviedb_53.data.source.remote
 
+import com.sun.moviedb_53.data.model.ActorDetail
 import com.sun.moviedb_53.data.model.GenresMovie
 import com.sun.moviedb_53.data.model.HotMovie
 import com.sun.moviedb_53.data.source.MovieDataSource
 import com.sun.moviedb_53.data.source.remote.fetchjson.GetJsonFromUrl
 import com.sun.moviedb_53.data.source.remote.fetchjson.ParseJson
-import com.sun.moviedb_53.utils.Constant
-import com.sun.moviedb_53.utils.DetailMovieType
-import com.sun.moviedb_53.utils.HotMovieType
-import com.sun.moviedb_53.utils.KeyEntityType
+import com.sun.moviedb_53.utils.*
 
 @Suppress("DEPRECATION")
 class MovieRemoteDataSource : MovieDataSource.Remote {
@@ -77,10 +75,32 @@ class MovieRemoteDataSource : MovieDataSource.Remote {
         GetJsonFromUrl(listener, KeyEntityType.GENRES_MOVIE_ITEM).execute(stringUrl)
     }
 
+    override fun <T> getDataInActor(
+        idActor: Int,
+        actorDetailType: ActorDetailType,
+        listener: OnFetchDataJsonListener<T>
+    ) {
+        val stringUrl = Constant.BASE_URL +
+                ACTOR_TYPE + idActor +
+                actorDetailType.path +
+                endPointParams
+        when (actorDetailType) {
+            ActorDetailType.ACTOR -> GetJsonFromUrl(
+                listener,
+                KeyEntityType.ACTOR_DETAIL
+            ).execute(stringUrl)
+            ActorDetailType.EXTERNAL -> GetJsonFromUrl(
+                listener,
+                KeyEntityType.EXTERNAL_ACTOR
+            ).execute(stringUrl)
+        }
+    }
+
     companion object {
         private const val MOVIE_TYPE = "movie/"
         private const val GENRES_TYPE = "genre/movie/list?"
         private const val DISCOVER_TYPE = "discover/movie?"
+        private const val ACTOR_TYPE = "person/"
 
         private var instance: MovieRemoteDataSource? = null
 

@@ -41,7 +41,7 @@ class RecommendationAdapter(private val onItemClick: (Int) -> Unit) :
                     textRecommendation.text = title
                     imageRecommendation.loadFromUrl(Constant.BASE_URL_IMAGE + posterPath)
                     setOnClickListener {
-                        onItemClick(position)
+                        id?.let(onItemClick)
                     }
                 }
             }

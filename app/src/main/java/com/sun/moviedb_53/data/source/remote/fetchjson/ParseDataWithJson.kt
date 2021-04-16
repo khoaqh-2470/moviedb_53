@@ -42,7 +42,7 @@ class ParseDataWithJson {
         return try {
             when (keyEntityType) {
                 KeyEntityType.MOVIE_ITEM -> {
-                    return parseJsonToList(
+                    parseJsonToList(
                         jsonObject?.getJSONArray(HotMovieEntry.MOVIE),
                         keyEntityType
                     )
@@ -72,8 +72,20 @@ class ParseDataWithJson {
                     )
                 }
                 KeyEntityType.GENRES_MOVIE_ITEM -> {
-                    return parseJsonToList(
+                    parseJsonToList(
                         jsonObject?.getJSONArray(GenresMovieEntry.MOVIE),
+                        keyEntityType
+                    )
+                }
+                KeyEntityType.ACTOR_DETAIL -> {
+                    parseJsonToObject(
+                        jsonObject,
+                        keyEntityType
+                    )
+                }
+                KeyEntityType.EXTERNAL_ACTOR -> {
+                    parseJsonToObject(
+                        jsonObject,
                         keyEntityType
                     )
                 }
@@ -118,6 +130,12 @@ class ParseDataWithJson {
                     }
                     KeyEntityType.GENRES_MOVIE_ITEM -> {
                         ParseJson().genresMovieParseJson(it)
+                    }
+                    KeyEntityType.ACTOR_DETAIL -> {
+                        ParseJson().actorDetailParseJson(it)
+                    }
+                    KeyEntityType.EXTERNAL_ACTOR -> {
+                        ParseJson().externalParseJson(it)
                     }
                 }
             }

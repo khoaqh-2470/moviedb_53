@@ -40,7 +40,7 @@ class ActorAdapter(private val onItemClick: (Int) -> Unit) :
                 actor.run {
                     imageActor.loadFromUrl(Constant.BASE_URL_IMAGE + imageUrl)
                     setOnClickListener {
-                        onItemClick(id)
+                        id.let(onItemClick)
                     }
                 }
             }

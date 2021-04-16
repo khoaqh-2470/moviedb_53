@@ -44,9 +44,9 @@ class ParseJson {
 
     fun actorParseJson(jsonObject: JSONObject?) = jsonObject?.run {
         Actor(
-            getInt(ActorEntry.ID),
-            getString(ActorEntry.NAME),
-            getString(ActorEntry.IMAGE_URL)
+            id = getInt(ActorEntry.ID),
+            name = getString(ActorEntry.NAME),
+            imageUrl = getString(ActorEntry.IMAGE_URL)
         )
     }
 
@@ -63,6 +63,26 @@ class ParseJson {
             getInt(GenresMovieEntry.ID),
             getString(GenresMovieEntry.TITLE),
             getString(GenresMovieEntry.URL_IMAGE)
+        )
+    }
+
+    fun actorDetailParseJson(jsonObject: JSONObject?) = jsonObject?.run {
+        ActorDetail(
+            id = getInt(ActorDetailEntry.ID),
+            name = getString(ActorDetailEntry.NAME),
+            imageUrl = getString(ActorDetailEntry.IMAGE_URL),
+            birthday = getString(ActorDetailEntry.BIRTHDAY),
+            gender = getInt(ActorDetailEntry.GENDER),
+            address = getString(ActorDetailEntry.ADDRESS)
+        )
+    }
+
+    fun externalParseJson(jsonObject: JSONObject?) = jsonObject?.run {
+        External(
+            id = getInt(ExternalEntry.ID),
+            facebook = getString(ExternalEntry.FACEBOOK),
+            twitter = getString(ExternalEntry.TWITTER),
+            instagram = getString(ExternalEntry.INSTAGRAM)
         )
     }
 }
