@@ -8,6 +8,7 @@ interface ActorContact {
     interface View {
         fun loadContentActorOnSuccess(actorDetail: ActorDetail)
         fun loadContentExternalOnSuccess(external: External)
+        fun loadMoviesOnSuccess(movies: List<HotMovie>)
         fun onError(exception: Exception?)
     }
 

@@ -1,12 +1,10 @@
 package com.sun.moviedb_53.data.source.remote
 
-import com.sun.moviedb_53.data.model.ActorDetail
 import com.sun.moviedb_53.data.model.GenresMovie
 import com.sun.moviedb_53.data.model.HotMovie
 import com.sun.moviedb_53.data.model.SearchMovie
 import com.sun.moviedb_53.data.source.MovieDataSource
 import com.sun.moviedb_53.data.source.remote.fetchjson.GetJsonFromUrl
-import com.sun.moviedb_53.data.source.remote.fetchjson.ParseJson
 import com.sun.moviedb_53.utils.*
 
 @Suppress("DEPRECATION")
@@ -111,7 +109,21 @@ class MovieRemoteDataSource : MovieDataSource.Remote {
                 page +
                 Constant.BASE_QUERY +
                 query
-        GetJsonFromUrl(listener,KeyEntityType.SEARCH_MOVIE_ITEM).execute(stringUrl)
+        GetJsonFromUrl(listener, KeyEntityType.SEARCH_MOVIE_ITEM).execute(stringUrl)
+    }
+
+    override fun getMovieByActor(
+        idActor: Int,
+        listener: OnFetchDataJsonListener<List<HotMovie>>
+    ) {
+        val stringUrl = Constant.BASE_URL +
+                DISCOVER_TYPE +
+                endPointParams +
+                Constant.BASE_SORT_BY_POPULARITY +
+                Constant.BASE_WITH_ACTOR +
+                idActor
+
+        GetJsonFromUrl(listener, KeyEntityType.MOVIE_ITEM).execute(stringUrl)
     }
 
     companion object {

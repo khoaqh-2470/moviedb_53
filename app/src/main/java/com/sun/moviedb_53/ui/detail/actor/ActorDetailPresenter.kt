@@ -2,6 +2,7 @@ package com.sun.moviedb_53.ui.detail.actor
 
 import com.sun.moviedb_53.data.model.ActorDetail
 import com.sun.moviedb_53.data.model.External
+import com.sun.moviedb_53.data.model.HotMovie
 import com.sun.moviedb_53.data.source.remote.OnFetchDataJsonListener
 import com.sun.moviedb_53.data.source.repository.MovieRepository
 
@@ -35,7 +36,17 @@ class ActorDetailPresenter(
         })
     }
 
-    override fun getListMovieOfActor(id: Int) {}
+    override fun getListMovieOfActor(id: Int) {
+        repository.getMovieByActor(id, object : OnFetchDataJsonListener<List<HotMovie>> {
+            override fun onSuccess(data: List<HotMovie>) {
+                view?.loadMoviesOnSuccess(data)
+            }
+
+            override fun onError(exception: Exception?) {
+                view?.onError(exception)
+            }
+        })
+    }
 
     override fun onStart() {}
 

@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sun.moviedb_53.R
 import com.sun.moviedb_53.data.model.Favorite
 import com.sun.moviedb_53.extensions.loadFromUrl
+import com.sun.moviedb_53.extensions.toGone
+import com.sun.moviedb_53.extensions.toVisible
 import com.sun.moviedb_53.utils.Constant
 import kotlinx.android.synthetic.main.item_favorite.view.*
 
@@ -50,10 +52,14 @@ class FavoriteAdapter(
         fun bindData(favorite: Favorite) {
             itemView.apply {
                 favorite.run {
+                    if (title.isEmpty()) textTitle.toGone() else textTitle.toVisible()
+                    if (tagLine.isEmpty()) textTagLine.toGone() else textTagLine.toVisible()
+
                     textTitle.text = title
                     textTagLine.text = tagLine
                     ratingBar.rating = (rate / 2).toFloat()
                     imageFavorite.loadFromUrl(Constant.BASE_URL_IMAGE + imagePoster)
+
                     setOnClickListener {
                         onItemClick(id)
                     }

@@ -7,13 +7,15 @@ data class ActorDetail(
     val birthday: String?,
     val gender: Int?,
     val address: String?,
+    val biography: String?
 )
 
 object ActorDetailEntry {
     const val ID = "id"
     const val NAME = "name"
-    const val IMAGE_URL = "name"
+    const val IMAGE_URL = "profile_path"
     const val BIRTHDAY = "birthday"
     const val GENDER = "gender"
     const val ADDRESS = "place_of_birth"
+    const val BIOGRAPHY = "biography"
 }

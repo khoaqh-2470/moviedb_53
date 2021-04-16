@@ -17,6 +17,8 @@ import com.sun.moviedb_53.data.source.remote.MovieRemoteDataSource
 import com.sun.moviedb_53.data.source.repository.FavoriteRepository
 import com.sun.moviedb_53.extensions.addFragment
 import com.sun.moviedb_53.extensions.loadFromUrl
+import com.sun.moviedb_53.extensions.toGone
+import com.sun.moviedb_53.extensions.toVisible
 import com.sun.moviedb_53.ui.detail.actor.ActorFragment
 import com.sun.moviedb_53.utils.Constant
 import kotlinx.android.synthetic.main.fragment_movie_details.*
@@ -130,6 +132,10 @@ class MovieDetailFragment : BaseFragment(), MovieDetailContact.View {
 
     private fun initDataMovieDetail(movieDetail: MovieDetail) {
         movieDetail.apply {
+            if (title.isEmpty()) textTitle.toGone() else textTitle.toVisible()
+            if (tagLine.isEmpty()) textTagLine.toGone() else textTagLine.toVisible()
+            if (releaseDate.isEmpty()) textRelease.toGone() else textRelease.toVisible()
+
             textTitle.text = title
             textOverview.text = resources.getString(R.string.overview) + description
             textRelease.text = releaseDate
