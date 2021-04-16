@@ -74,8 +74,15 @@ class MovieRepository private constructor(
         page: Int,
         query: String,
         listener: OnFetchDataJsonListener<MutableList<SearchMovie?>>
-    ){
-        remote.getSearchResult(page,query,listener)
+    ) {
+        remote.getSearchResult(page, query, listener)
+    }
+
+    fun getMovieByActor(
+        idActor: Int,
+        listener: OnFetchDataJsonListener<List<HotMovie>>
+    ) {
+        remote.getMovieByActor(idActor, listener)
     }
 
     companion object {

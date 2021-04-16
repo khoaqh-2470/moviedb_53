@@ -111,7 +111,21 @@ class MovieRemoteDataSource : MovieDataSource.Remote {
                 page +
                 Constant.BASE_QUERY +
                 query
-        GetJsonFromUrl(listener,KeyEntityType.SEARCH_MOVIE_ITEM).execute(stringUrl)
+        GetJsonFromUrl(listener, KeyEntityType.SEARCH_MOVIE_ITEM).execute(stringUrl)
+    }
+
+    override fun getMovieByActor(
+        idActor: Int,
+        listener: OnFetchDataJsonListener<List<HotMovie>>
+    ) {
+        val stringUrl = Constant.BASE_URL +
+                DISCOVER_TYPE +
+                endPointParams +
+                Constant.BASE_SORT_BY_POPULARITY +
+                Constant.BASE_WITH_ACTOR +
+                idActor
+
+        GetJsonFromUrl(listener, KeyEntityType.MOVIE_ITEM).execute(stringUrl)
     }
 
     companion object {
