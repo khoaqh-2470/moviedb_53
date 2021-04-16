@@ -7,8 +7,12 @@ import com.sun.moviedb_53.R
 import com.sun.moviedb_53.base.BaseFragment
 import com.sun.moviedb_53.data.model.ActorDetail
 import com.sun.moviedb_53.data.model.External
+import com.sun.moviedb_53.data.source.remote.MovieRemoteDataSource
+import com.sun.moviedb_53.data.source.repository.MovieRepository
 
 class ActorFragment : BaseFragment(), ActorContact.View {
+
+    private var actorDetailPresenter: ActorDetailPresenter? = null
 
     override fun getLayoutId() = R.layout.fragment_actor
 
@@ -16,6 +20,9 @@ class ActorFragment : BaseFragment(), ActorContact.View {
         arguments?.let {
             it.getInt(BUNDLE_ID_ACTOR_DETAIL)
         }
+        actorDetailPresenter = ActorDetailPresenter(
+            MovieRepository.getInstance(MovieRemoteDataSource.getInstance())
+        )
     }
 
     override fun loadContentActorOnSuccess(actorDetail: ActorDetail) {}
