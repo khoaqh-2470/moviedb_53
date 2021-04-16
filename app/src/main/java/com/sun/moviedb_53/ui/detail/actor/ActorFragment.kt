@@ -1,20 +1,20 @@
 package com.sun.moviedb_53.ui.detail.actor
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import com.sun.moviedb_53.R
+import com.sun.moviedb_53.base.BaseFragment
 
-class ActorFragment : Fragment() {
+class ActorFragment : BaseFragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_actor, container, false)
+    override fun getLayoutId() = R.layout.fragment_actor
+
+    override fun onViewCreated(view: View) {
+        arguments?.let {
+            it.getInt(BUNDLE_ID_ACTOR_DETAIL)
+        }?.let {
+
+        }
     }
 
     companion object {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/dp_10">
+    android:layout_margin="@dimen/dp_5">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -14,8 +14,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="550:825"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageFavorite"
@@ -37,7 +39,7 @@
         android:id="@+id/textTagLine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginTop="@dimen/dp_3"
         android:maxLines="1"
         android:text="@string/appbar_scrolling_view_behavior"
         android:textColor="@color/white70"
@@ -46,15 +48,17 @@
         app:layout_constraintTop_toBottomOf="@+id/textTitle" />
 
     <androidx.appcompat.widget.AppCompatRatingBar
+        android:layout_marginBottom="@dimen/dp_10"
         android:id="@+id/ratingBar"
+        style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:isIndicator="true"
+        android:max="5"
         android:numStars="5"
         android:progressBackgroundTint="@color/white"
         android:progressTint="@color/yellow"
-        android:scaleX="0.5"
-        android:scaleY="0.5"
+        android:rating="5"
         android:stepSize="0.5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
